@@ -42,14 +42,25 @@ const Home = () => {
           marginTop: '1.5rem'
         }}>
           {restaurants.map((rest, index) => (
-            <div key={index} style={{
-              background: '#fff',
-              borderRadius: '10px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              overflow: 'hidden',
-              transition: 'transform 0.3s ease',
-              cursor: 'pointer'
-            }}>
+            <div
+              key={index}
+              style={{
+                background: '#fff',
+                borderRadius: '10px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                overflow: 'hidden',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.03)';
+                e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+              }}
+            >
               <img src={rest.image} alt={rest.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
               <div style={{ padding: '1rem' }}>
                 <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.3rem', color: '#222' }}>{rest.name}</h3>
