@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Header = () => (
   <header style={{ display: 'flex', alignItems: 'center', gap:'1rem', padding: '1rem', background: '#222', color: 'fff'}}>
     <img src={logo} alt="LebEats Logo" style={{ height: '50px', borderRadius: '8px' }} />
-    <h1 style={{ margin: 0 }}>LebEats</h1>
+    <h1 style={{ margin: 0, color: 'fff' }}>LebEats</h1>
     <Link to="/about" style={{ color: '#fff', marginLeft: 'auto' }}>About</Link>
   </header>
 );
