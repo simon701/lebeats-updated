@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import backgroundVideo from '../assets/Snapinsta.app_video_GKa9kRDxIslC9Y0AAHtf543-OwRebq_EAAAF (1).mp4';
 import discover from '../assets/Discover.png';
 import eat from '../assets/Eat.png';
+import logo from '../assets/WhatsApp Image 2025-03-22 at 16.49.56_efc6d68a.jpg';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved === 'true';
   });
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
@@ -34,40 +37,14 @@ const Home = () => {
     color: darkMode ? '#f0f0f0' : '#333'
   };
 
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <div style={{ backgroundColor: themeStyles.backgroundColor, color: themeStyles.color, minHeight: '100vh' }}>
-      <header style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1rem 2rem',
-        backgroundColor: themeStyles.backgroundColor,
-        color: themeStyles.color,
-        fontFamily: 'Arial, sans-serif',
-        position: 'sticky',
-        top: 0,
-        zIndex: 10,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-      }}>
-        <h1 style={{ fontSize: '1.8rem', color: '#d62828', fontWeight: 'bold' }}>LebEats</h1>
-        <nav style={{ display: 'flex', gap: '1.5rem' }}>
-          <Link to="/" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>Home</Link>
-          <Link to="/about" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>About Us</Link>
-          <Link to="/restaurants" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>Restaurants</Link>
-          <Link to="/contact" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>Contact Us</Link>
-          <button onClick={() => setDarkMode(!darkMode)} style={{
-            backgroundColor: '#d62828',
-            color: '#fff',
-            border: 'none',
-            padding: '0.5rem 1rem',
-            borderRadius: '5px',
-            cursor: 'pointer'
-          }}>
-            {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-          </button>
-        </nav>
-      </header>
+      {/* HEADER */}
+      
 
+      {/* HERO */}
       <section style={{
         height: '100vh',
         position: 'relative',
@@ -132,6 +109,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* CARDS */}
       <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
         <div style={{
           position: 'absolute',
@@ -143,7 +121,9 @@ const Home = () => {
           borderRadius: '8px',
           zIndex: 0
         }}></div>
-        <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem', color: '#d62828', position: 'relative', zIndex: 1 }}>What would you like to do?</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem', color: '#d62828', position: 'relative', zIndex: 1 }}>
+          What would you like to do?
+        </h2>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
