@@ -1,10 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import backgroundVideo from '../assets/Snapinsta.app_video_GKa9kRDxIslC9Y0AAHtf543-OwRebq_EAAAF (1).mp4';
 import discover from '../assets/Discover.png';
 import eat from '../assets/Eat.png';
 
 const Home = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    return saved === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
   useEffect(() => {
     const handleScroll = () => {
       const hero = document.querySelector('.hero-text');
@@ -20,15 +29,20 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const themeStyles = {
+    backgroundColor: darkMode ? '#111' : '#fff',
+    color: darkMode ? '#f0f0f0' : '#333'
+  };
+
   return (
-    <>
+    <div style={{ backgroundColor: themeStyles.backgroundColor, color: themeStyles.color, minHeight: '100vh' }}>
       <header style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '1rem 2rem',
-        backgroundColor: '#fff',
-        color: '#333',
+        backgroundColor: themeStyles.backgroundColor,
+        color: themeStyles.color,
         fontFamily: 'Arial, sans-serif',
         position: 'sticky',
         top: 0,
@@ -37,15 +51,25 @@ const Home = () => {
       }}>
         <h1 style={{ fontSize: '1.8rem', color: '#d62828', fontWeight: 'bold' }}>LebEats</h1>
         <nav style={{ display: 'flex', gap: '1.5rem' }}>
-          <Link to="/" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>Home</Link>
-          <Link to="/about" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>About Us</Link>
-          <Link to="/restaurants" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>Restaurants</Link>
-          <Link to="/contact" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>Contact Us</Link>
+          <Link to="/" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>Home</Link>
+          <Link to="/about" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>About Us</Link>
+          <Link to="/restaurants" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>Restaurants</Link>
+          <Link to="/contact" style={{ textDecoration: 'none', color: themeStyles.color, fontWeight: '600' }}>Contact Us</Link>
+          <button onClick={() => setDarkMode(!darkMode)} style={{
+            backgroundColor: '#d62828',
+            color: '#fff',
+            border: 'none',
+            padding: '0.5rem 1rem',
+            borderRadius: '5px',
+            cursor: 'pointer'
+          }}>
+            {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+          </button>
         </nav>
       </header>
 
       <section style={{
-        height: '600px',
+        height: '100vh',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
@@ -108,12 +132,24 @@ const Home = () => {
         </div>
       </section>
 
-      <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem', color: '#d62828' }}>What would you like to do?</h2>
+      <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.05)',
+          borderRadius: '8px',
+          zIndex: 0
+        }}></div>
+        <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem', color: '#d62828', position: 'relative', zIndex: 1 }}>What would you like to do?</h2>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2rem'
+          gap: '2rem',
+          position: 'relative',
+          zIndex: 1
         }}>
           <div style={{
             backgroundImage: `url(${discover})`,
@@ -160,7 +196,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
