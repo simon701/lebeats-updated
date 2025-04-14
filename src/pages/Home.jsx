@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import backgroundVideo from '../assets/Snapinsta.app_video_GKa9kRDxIslC9Y0AAHtf543-OwRebq_EAAAF (1).mp4';
+import discover from '../assets/Discover.png';
+import eat from '../assets/Eat.png';
 
 const Home = () => {
   useEffect(() => {
@@ -19,29 +22,68 @@ const Home = () => {
 
   return (
     <>
-      
+      <header style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '1rem 2rem',
+        backgroundColor: '#fff',
+        color: '#333',
+        fontFamily: 'Arial, sans-serif',
+        position: 'sticky',
+        top: 0,
+        zIndex: 10,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+      }}>
+        <h1 style={{ fontSize: '1.8rem', color: '#d62828', fontWeight: 'bold' }}>LebEats</h1>
+        <nav style={{ display: 'flex', gap: '1.5rem' }}>
+          <Link to="/" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>Home</Link>
+          <Link to="/about" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>About Us</Link>
+          <Link to="/restaurants" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>Restaurants</Link>
+          <Link to="/contact" style={{ textDecoration: 'none', color: '#333', fontWeight: '600' }}>Contact Us</Link>
+        </nav>
+      </header>
 
       <section style={{
-        height: '100vh',
-        backgroundImage: 'url(https://source.unsplash.com/featured/?lebanon)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        height: '600px',
+        position: 'relative',
+        overflow: 'hidden',
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        color: '#fff',
+        justifyContent: 'center',
         textAlign: 'center',
-        padding: '0 1rem',
-        transition: 'all 0.4s ease'
+        color: '#fff'
       }}>
-        <div className="hero-text" style={{
-          transition: 'transform 0.4s ease, opacity 0.4s ease'
-        }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            top: 0,
+            left: 0,
+            zIndex: -2
+          }}
+          src={backgroundVideo}
+        />
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          zIndex: -1
+        }}></div>
+        <div className="hero-text" style={{ transition: 'transform 0.4s ease, opacity 0.4s ease', padding: '0 1rem' }}>
           <h1 style={{ fontSize: '3rem', marginBottom: '1rem', textShadow: '2px 2px 6px rgba(0,0,0,0.6)' }}>
             Discover Lebanon's Flavors
           </h1>
-          <p style={{ fontSize: '1.2rem', maxWidth: '600px', textShadow: '1px 1px 3px rgba(0,0,0,0.6)' }}>
+          <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto', textShadow: '1px 1px 3px rgba(0,0,0,0.6)' }}>
             Welcome to LebEats — your gateway to the best restaurants, local eats, and food experiences across Lebanon 🇱🇧
           </p>
           <Link to="/restaurants">
@@ -74,7 +116,7 @@ const Home = () => {
           gap: '2rem'
         }}>
           <div style={{
-            backgroundImage: 'url(https://source.unsplash.com/featured/?lebanon)',
+            backgroundImage: src={discover},
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             borderRadius: '10px',
@@ -96,7 +138,7 @@ const Home = () => {
           </div>
 
           <div style={{
-            backgroundImage: 'url(https://source.unsplash.com/featured/?lebanese-food)',
+            backgroundImage: src={eat},
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             borderRadius: '10px',
