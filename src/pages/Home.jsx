@@ -4,7 +4,7 @@ import backgroundVideo from '../assets/Snapinsta.app_video_GKa9kRDxIslC9Y0AAHtf5
 import discover from '../assets/Discover.png';
 import eat from '../assets/Eat.png';
 import logo from '../assets/WhatsApp Image 2025-03-22 at 16.49.56_efc6d68a.jpg';
-import Header from './components/Header.jsx';
+import Header from '../components/Header';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(() => {
