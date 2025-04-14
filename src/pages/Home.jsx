@@ -116,7 +116,7 @@ const Home = () => {
           gap: '2rem'
         }}>
           <div style={{
-            backgroundImage: src={discover},
+            backgroundImage: `url(${discover})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             borderRadius: '10px',
@@ -138,7 +138,7 @@ const Home = () => {
           </div>
 
           <div style={{
-            backgroundImage: src={eat},
+            backgroundImage: `url(${eat})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             borderRadius: '10px',
