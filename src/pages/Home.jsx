@@ -44,9 +44,9 @@ const Home = () => {
     <div style={{ backgroundColor: themeStyles.backgroundColor, color: themeStyles.color, minHeight: '100vh' }}>
       {/* HEADER */}
       <Header
-          themeStyles={themeStyles}
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
+        themeStyles={themeStyles}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
       />
 
       {/* HERO */}
@@ -76,6 +76,7 @@ const Home = () => {
           }}
           src={backgroundVideo}
         />
+
         <div style={{
           position: 'absolute',
           top: 0,
