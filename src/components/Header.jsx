@@ -3,6 +3,7 @@ import logo from '../assets/WhatsApp Image 2025-03-22 at 16.49.56_efc6d68a.jpg';
 import { Link } from 'react-router-dom';
 
 const Header = ({ themeStyles, darkMode, setDarkMode }) => {
+  if (!themeStyles) return null; // prevent crash if undefined
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = window.innerWidth <= 768;
 
